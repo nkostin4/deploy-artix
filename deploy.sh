@@ -1,5 +1,6 @@
 #!/bin/sh
 # N. Kostin's Boostrapping Script
+# Last modified 2021-03-01 00:00 Moskva
 # Inspired by Luke Smith's LARBS
 
 ### OPTIONS AND VARIABLES ###
@@ -197,9 +198,7 @@ installationloop
 
 # Install the dotfiles in the user's home directory
 putgitrepo "$dotfilesrepo" "/home/$name" "$repobranch"
-# rm -f "/home/$name/README.md" "/home/$name/LICENSE" "/home/$name/FUNDING.yml"
-# make git ignore deleted LICENSE & README.md files
-# git update-index --assume-unchanged "/home/$name/README.md" "/home/$name/LICENSE" "/home/$name/FUNDING.yml"
+# make git forget about everything
 rm -rf "/home/$name/.git"
 
 # Most important command! Get rid of the beep!
