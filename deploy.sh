@@ -1,6 +1,6 @@
 #!/bin/sh
 # N. Kostin's Boostrapping Script
-# Last modified 2021-03-01 00:00 Moskva
+# Last modified 2021-03-07 00:00 Moskva
 # Inspired by Luke Smith's LARBS
 
 ### OPTIONS AND VARIABLES ###
@@ -14,7 +14,7 @@ while getopts ":a:r:b:p:h" o; do case "${o}" in
 	*) printf "Invalid option: -%s\\n" "$OPTARG" && exit 1 ;;
 esac done
 
-[ -z "$dotfilesrepo" ] && dotfilesrepo="https://github.com/nkostin4/dotfiles.git"
+[ -z "$dotfilesrepo" ] && dotfilesrepo="https://github.com/nkostin4/circles.git"
 [ -z "$progsfile" ] && progsfile="https://raw.githubusercontent.com/nkostin4/deploy-artix/master/progs.csv"
 [ -z "$aurhelper" ] && aurhelper="paru"
 [ -z "$repobranch" ] && repobranch="master"
@@ -199,7 +199,7 @@ installationloop
 # Install the dotfiles in the user's home directory
 putgitrepo "$dotfilesrepo" "/home/$name" "$repobranch"
 # make git forget about everything
-rm -rf "/home/$name/.git"
+rm -rf "/home/$name/README.md" "/home/$name/.git"
 
 # Most important command! Get rid of the beep!
 systembeepoff
