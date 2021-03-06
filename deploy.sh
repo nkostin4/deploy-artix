@@ -168,7 +168,7 @@ preinstallmsg || error "User exited."
 # Refresh Arch keyrings.
 refreshkeys || error "Error automatically refreshing Arch keyring. Consider doing so manually."
 
-for x in curl git ntp bash python; do
+for x in curl git ntp zsh python; do
 	dialog --title "N. Kostin's Installation" --infobox "Installing \`$x\` which is required to install and configure other programs." 5 70
 	installpkg "$x"
 done
@@ -204,9 +204,9 @@ rm -rf "/home/$name/.git"
 # Most important command! Get rid of the beep!
 systembeepoff
 
-# Make bash the default shell for the user.
-chsh -s /bin/bash "$name" >/dev/null 2>&1
-sudo -u "$name" mkdir -p "/home/$name/.cache/bash/"
+# Make zsh the default shell for the user.
+chsh -s /bin/zsh "$name" >/dev/null 2>&1
+sudo -u "$name" mkdir -p "/home/$name/.cache/zsh/"
 
 # Tap to click
 [ ! -f /etc/X11/xorg.conf.d/40-libinput.conf ] && printf 'Section "InputClass"
