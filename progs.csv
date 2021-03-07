@@ -9,7 +9,6 @@
 ,dosfstools,"allows access to dos-like filesystems."
 ,rxvt-unicode,"is a terminal emulator."
 ,urxvt-perls,"provides perl scripts for the urxvt terminal."
-,zsh-syntax-highlighting,"provides highlighting for the zsh shell."
 ,sxiv,"is a minimal image viewer."
 ,xwallpaper,"sets the wallpaper."
 ,ffmpeg,"can splice and dice video and audio on the command line."
