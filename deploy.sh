@@ -16,7 +16,6 @@ esac done
 
 [ -z "$dotfilesrepo" ] && dotfilesrepo="https://github.com/nkostin4/circles.git"
 [ -z "$progsfile" ] && progsfile="https://raw.githubusercontent.com/nkostin4/deploy-artix/master/progs.csv"
-[ -z "$aurhelper" ] && aurhelper="paru"
 [ -z "$repobranch" ] && repobranch="master"
 
 ### FUNCTIONS ###
@@ -72,17 +71,6 @@ refreshkeys() { \
 newperms() { # Set special sudoers settings for install (or after).
 	sed -i "/#KOSTIN/d" /etc/sudoers
 	echo "$* #KOSTIN" >> /etc/sudoers ;}
-
-manualinstall() { # Installs $1 manually if not installed. Used only for AUR helper here.
-	[ -f "/usr/bin/$1" ] || (
-	dialog --infobox "Installing \"$1\", an AUR helper..." 4 50
-	cd /tmp || exit 1
-	rm -rf /tmp/"$1"*
-	curl -sO https://aur.archlinux.org/cgit/aur.git/snapshot/"$1".tar.gz &&
-	sudo -u "$name" tar -xvf "$1".tar.gz >/dev/null 2>&1 &&
-	cd "$1" &&
-	sudo -u "$name" makepkg --noconfirm -si >/dev/null 2>&1
-	cd /tmp || return 1) ;}
 
 maininstall() { # Installs all needed programs from main repo.
 	dialog --title "N. Kostin's Installation" --infobox "Installing \`$1\` ($n of $total). $1 $2" 5 70
@@ -186,9 +174,6 @@ newperms "%wheel ALL=(ALL) NOPASSWD: ALL"
 
 # Use all cores for compilation.
 sed -i "s/-j2/-j$(nproc)/;s/^#MAKEFLAGS/MAKEFLAGS/" /etc/makepkg.conf
-
-# Uncomment if an AUR helper needs to be installed
-# manualinstall $aurhelper || error "Failed to install AUR helper."
 
 # The command that does all the installing. Reads the progs.csv file and
 # installs each needed program the way required. Be sure to run this only after
