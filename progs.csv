@@ -13,6 +13,7 @@
 ,sxiv,"is a minimal image viewer."
 ,xwallpaper,"sets the wallpaper."
 ,ffmpeg,"can splice and dice video and audio on the command line."
+,gnome-keyring,"serves as the system keyring."
 ,neovim,"is a based text editor."
 ,mpd,"is a lightweight music daemon."
 ,mpc,"is a terminal interface for mpd."
