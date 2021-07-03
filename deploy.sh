@@ -1,6 +1,6 @@
 #!/bin/sh
 # N. Kostin's Boostrapping Script
-# Last modified 2021-03-08 10:44 Moskva
+# Last modified 2021-07-03 12:00 Moskva
 # Inspired by Luke Smith's LARBS
 
 ### OPTIONS AND VARIABLES ###
@@ -148,7 +148,7 @@ preinstallmsg || error "User exited."
 # Refresh Arch keyrings.
 refreshkeys || error "Error automatically refreshing Arch keyring. Consider doing so manually."
 
-for x in curl git ntp zsh python; do
+for x in curl git ntp zsh python python-pip; do
 	dialog --title "N. Kostin's Installation" --infobox "Installing \`$x\` which is required to install and configure other programs." 5 70
 	installpkg "$x"
 done
