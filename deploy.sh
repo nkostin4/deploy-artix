@@ -1,6 +1,5 @@
 #!/bin/sh
 # N. Kostin's Boostrapping Script
-# Last modified 2021-07-03 12:00 Moskva
 # Inspired by Luke Smith's LARBS
 
 ### OPTIONS AND VARIABLES ###
