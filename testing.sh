@@ -61,7 +61,7 @@ adduserandpass() { \
 
 refreshkeys() { \
 	dialog --infobox "Refreshing Arch Keyring..." 4 40
-	pacman -Q artix-keyring >/dev/null 2>&1 && pacman --noconfirm -S artix-keyring >/dev/null 2>&1
+	pacman -Q artix-keyring >/dev/null 2>&1 && pacman --noconfirm -S artix-keyring artix-archlinux-support >/dev/null 2>&1
 	pacman --noconfirm -S archlinux-keyring >/dev/null 2>&1
 	}
 
@@ -143,14 +143,15 @@ preinstallmsg || error "User exited."
 
 ### The rest of the script requires no user input.
 
+
+# Refresh Arch keyrings.
+refreshkeys || error "Error automatically refreshing Arch keyring. Consider doing so manually."
+
 # Use Open Build Service Repository for Ungoogled Chromium
 curl -Ls "https://download.opensuse.org/repositories/home:/ungoogled_chromium/Arch/x86_64/home_ungoogled_chromium_Arch.key" | pacman-key --add -
 [ ! -f /etc/pacman.conf ] && printf '[home_ungoogled_chromium_Arch]
 SigLevel = Required TrustAll
 Server = https://download.opensuse.org/repositories/home:/ungoogled_chromium/Arch/$arch' >> /etc/pacman.conf
-
-# Refresh Arch keyrings.
-refreshkeys || error "Error automatically refreshing Arch keyring. Consider doing so manually."
 
 for x in curl git ntp zsh python python-pip; do
 	dialog --title "N. Kostin's Installation" --infobox "Installing \`$x\` which is required to install and configure other programs." 5 70
