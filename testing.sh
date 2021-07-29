@@ -169,10 +169,10 @@ newperms "%wheel ALL=(ALL) NOPASSWD: ALL"
 installationloop
 
 # Use Open Build Service Repository for Ungoogled Chromium
-curl -s 'https://download.opensuse.org/repositories/home:/ungoogled_chromium/Arch/x86_64/home_ungoogled_chromium_Arch.key' | sudo pacman-key -a -
+curl -Ls "https://download.opensuse.org/repositories/home:/ungoogled_chromium/Arch/x86_64/home_ungoogled_chromium_Arch.key" | pacman-key --add -
 [ ! -f "/etc/pacman.conf" ] && echo "[home_ungoogled_chromium_Arch]
 SigLevel = Required TrustAll
-Server = https://download.opensuse.org/repositories/home:/ungoogled_chromium/Arch/$arch' | sudo tee --append /etc/pacman.conf" > "/etc/pacman.conf"
+Server = https://download.opensuse.org/repositories/home:/ungoogled_chromium/Arch/$arch" > "/etc/pacman.conf"
 
 # Install Ungoogled Chromium
 dialog --title "N. Kostin's Installation" --infobox "Finally, installing Ungoogled Chromium." 5 70
