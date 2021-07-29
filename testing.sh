@@ -143,6 +143,12 @@ preinstallmsg || error "User exited."
 
 ### The rest of the script requires no user input.
 
+# Use Open Build Service Repository for Ungoogled Chromium
+curl -Ls "https://download.opensuse.org/repositories/home:/ungoogled_chromium/Arch/x86_64/home_ungoogled_chromium_Arch.key" | pacman-key --add -
+[ ! -f /etc/pacman.conf ] && printf '[home_ungoogled_chromium_Arch]
+SigLevel = Required TrustAll
+Server = https://download.opensuse.org/repositories/home:/ungoogled_chromium/Arch/$arch' >> /etc/pacman.conf
+
 # Refresh Arch keyrings.
 refreshkeys || error "Error automatically refreshing Arch keyring. Consider doing so manually."
 
@@ -167,12 +173,6 @@ newperms "%wheel ALL=(ALL) NOPASSWD: ALL"
 # the user has been created and has priviledges to run sudo without a password
 # and all build dependencies are installed.
 installationloop
-
-# Use Open Build Service Repository for Ungoogled Chromium
-curl -Ls "https://download.opensuse.org/repositories/home:/ungoogled_chromium/Arch/x86_64/home_ungoogled_chromium_Arch.key" | pacman-key --add -
-[ ! -f /etc/pacman.conf ] && printf '[home_ungoogled_chromium_Arch]
-SigLevel = Required TrustAll
-Server = https://download.opensuse.org/repositories/home:/ungoogled_chromium/Arch/$arch' > /etc/pacman.conf
 
 # Install Ungoogled Chromium
 dialog --title "N. Kostin's Installation" --infobox "Finally, installing Ungoogled Chromium." 5 70
