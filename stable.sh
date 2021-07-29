@@ -80,7 +80,7 @@ gitmakeinstall() {
 	dialog --title "N. Kostin's Installation" --infobox "Installing \`$progname\` ($n of $total) via \`git\` and \`make\`. $(basename "$1") $2" 5 70
 	sudo -u "$name" git clone --depth 1 "$1" "$dir" >/dev/null 2>&1 || { cd "$dir" || return 1 ; sudo -u "$name" git pull --force origin master;}
 	cd "$dir" || exit 1
-    make clean install >/dev/null 2>&1
+	make clean install >/dev/null 2>&1
 	cd /tmp || return 1 ;}
 
 pipinstall() { \
