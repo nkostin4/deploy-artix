@@ -22,7 +22,7 @@ installpkg(){ pacman --noconfirm --needed -S "$1" >/dev/null 2>&1 ;}
 error() { clear; printf "ERROR:\\n%s\\n" "$1" >&2; exit 1;}
 
 welcomemsg() { \
-	dialog --title "Welcome!" --msgbox "Welcome!\\n\\nThis script installs a fully-featured Linux desktop.\\n\\n-N. Kostin" 10 60
+	dialog --title "Welcome!" --msgbox "Welcome!\\n\\nThis script installs a comfy Linux desktop.\\n\\n-N. Kostin" 10 60
 
 	dialog --colors --title "Important Note!" --yes-label "All ready!" --no-label "Return..." --yesno "Be sure the computer you are using has current pacman updates and refreshed Arch keyrings.\\n\\nIf it does not, the installation of some programs might fail." 8 70
 	}
