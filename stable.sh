@@ -1,5 +1,7 @@
 #!/bin/sh
 # N. Kostin's Boostrapping Script
+# Don't be a Brainlet
+# Bee yourself
 
 ### OPTIONS AND VARIABLES ###
 
