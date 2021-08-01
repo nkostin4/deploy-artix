@@ -1,5 +1,6 @@
 #!/bin/sh
 # N. Kostin's Boostrapping Script
+# UNSTABLE
 
 ### OPTIONS AND VARIABLES ###
 
@@ -22,7 +23,7 @@ installpkg(){ pacman --noconfirm --needed -S "$1" >/dev/null 2>&1 ;}
 error() { clear; printf "ERROR:\\n%s\\n" "$1" >&2; exit 1;}
 
 welcomemsg() { \
-	dialog --title "Welcome!" --msgbox "Welcome!\\n\\nThis script installs a fully-featured Linux desktop.\\n\\n-N. Kostin" 10 60
+	dialog --title "Welcome!" --msgbox "Welcome!\\n\\nThis script installs a comfy Linux desktop.\\n\\n-N. Kostin" 10 60
 
 	dialog --colors --title "Important Note!" --yes-label "All ready!" --no-label "Return..." --yesno "Be sure the computer you are using has current pacman updates and refreshed Arch keyrings.\\n\\nIf it does not, the installation of some programs might fail." 8 70
 	}
@@ -80,7 +81,7 @@ gitmakeinstall() {
 	dialog --title "N. Kostin's Installation" --infobox "Installing \`$progname\` ($n of $total) via \`git\` and \`make\`. $(basename "$1") $2" 5 70
 	sudo -u "$name" git clone --depth 1 "$1" "$dir" >/dev/null 2>&1 || { cd "$dir" || return 1 ; sudo -u "$name" git pull --force origin master;}
 	cd "$dir" || exit 1
-    make clean install >/dev/null 2>&1
+	make clean install >/dev/null 2>&1
 	cd /tmp || return 1 ;}
 
 pipinstall() { \
@@ -143,15 +144,8 @@ preinstallmsg || error "User exited."
 
 ### The rest of the script requires no user input.
 
-
 # Refresh Arch keyrings.
 refreshkeys || error "Error automatically refreshing Arch keyring. Consider doing so manually."
-
-# Use Open Build Service Repository for Ungoogled Chromium
-curl -Ls "https://download.opensuse.org/repositories/home:/ungoogled_chromium/Arch/x86_64/home_ungoogled_chromium_Arch.key" | pacman-key --add -
-[ ! -f /etc/pacman.conf ] && printf '[home_ungoogled_chromium_Arch]
-SigLevel = Required TrustAll
-Server = https://download.opensuse.org/repositories/home:/ungoogled_chromium/Arch/$arch' >> /etc/pacman.conf
 
 for x in curl git ntp zsh python python-pip; do
 	dialog --title "N. Kostin's Installation" --infobox "Installing \`$x\` which is required to install and configure other programs." 5 70
@@ -169,15 +163,14 @@ adduserandpass || error "Error adding username and/or password."
 # in a fakeroot environment, this is required for all builds with AUR.
 newperms "%wheel ALL=(ALL) NOPASSWD: ALL"
 
+# Use all cores for compilation.
+sed -i "s/-j2/-j$(nproc)/;s/^#MAKEFLAGS/MAKEFLAGS/" /etc/makepkg.conf
+
 # The command that does all the installing. Reads the progs.csv file and
 # installs each needed program the way required. Be sure to run this only after
 # the user has been created and has priviledges to run sudo without a password
 # and all build dependencies are installed.
 installationloop
-
-# Install Ungoogled Chromium
-dialog --title "N. Kostin's Installation" --infobox "Finally, installing Ungoogled Chromium." 5 70
-installpkg "ungoogled-chromium"
 
 # Install the dotfiles in the user's home directory
 putgitrepo "$dotfilesrepo" "/home/$name" "$repobranch"
@@ -204,7 +197,7 @@ EndSection' > /etc/X11/xorg.conf.d/40-libinput.conf
 # This line, overwriting the `newperms` command above will allow the user to run
 # serveral important commands, `shutdown`, `reboot`, updating, etc. without a password.
 newperms "%wheel ALL=(ALL) ALL #KOSTIN
-%wheel ALL=(ALL) NOPASSWD: /usr/bin/poweroff,/usr/bin/reboot,/usr/bin/mount,/usr/bin/umount,/usr/bin/pacman -Syu,/usr/bin/pacman -Syyu,/usr/bin/packer -Syu,/usr/bin/packer -Syyu,/usr/bin/rc-service NetworkManager restart,/usr/bin/pacman -Syyu --noconfirm,/usr/bin/loadkeys,/usr/bin/paru,/usr/bin/pacman -Syyuw --noconfirm"
+%wheel ALL=(ALL) NOPASSWD: /usr/bin/poweroff,/usr/bin/reboot,/usr/bin/mount,/usr/bin/umount,/usr/bin/pacman -Syu,/usr/bin/pacman -Syyu,/usr/bin/rc-service NetworkManager restart,/usr/bin/pacman -Syyu --noconfirm,/usr/bin/loadkeys,/usr/bin/pacman -Syyuw --noconfirm"
 
 # Last message! Install complete!
 finalize

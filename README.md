@@ -12,13 +12,13 @@ sh stable.sh
 Alternatively, for the testing (unstable) version, run
 
 ```
-curl -LO https://raw.githubusercontent.com/nkostin4/deploy-artix/master/testing.sh
-sh testing.sh
+curl -LO https://raw.githubusercontent.com/nkostin4/deploy-artix/master/unstable.sh
+sh unstable.sh
 ```
 
 ## What does this script do?
 
-This is a bootstrapping script that is meant to be run after installing Artix Linux (ideally with the OpenRC init system). Specifically, it
+This is a bootstrapping script that is meant to be run after installing Artix Linux (with the OpenRC init system). Specifically, it
 
 - Installs the programs in the `progs.csv` file.
 - Deploys [my dotfiles](https://github.com/nkostin4/circles).
