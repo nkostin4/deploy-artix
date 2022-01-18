@@ -33,7 +33,7 @@
 ,zathura-ps,"provides PostScript support for zathura."
 ,gnome-keyring,"serves as the system keyring."
 ,fzf,"is a fuzzy finder tool."
-,maim,"puts scrotcucks on suicide watch."
+,maim,"is better than scrot."
 G,https://github.com/nkostin4/slstatus.git,"is the suckless status bar."
 G,https://github.com/nkostin4/dmenu.git,"is the suckless run launcher."
 G,https://github.com/nkostin4/dwm.git,"is the suckless window manager."
