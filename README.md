@@ -20,7 +20,7 @@ sh unstable.sh
 
 This is a bootstrapping script that is meant to be run after installing Artix Linux (with the OpenRC init system). Specifically, it
 
-- Installs the programs in the `progs.csv` file.
-- Deploys [my dotfiles](https://github.com/nkostin4/circles).
+- installs the programs in the `progs.csv` file, and
+- deploys [my dotfiles](https://github.com/nkostin4/circles).
 
-After running this script, enjoy a comfy desktop.
+After running this script, enjoy a comfy and productive desktop.
