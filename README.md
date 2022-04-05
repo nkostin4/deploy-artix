@@ -18,9 +18,9 @@ sh unstable.sh
 
 ## What does this script do?
 
-This is a bootstrapping script that is meant to be run after installing Artix Linux (with the OpenRC init system). Specifically, it
+It's a bootstrapping script that is meant to be run after installing Artix Linux (with the OpenRC init system). Specifically, it
 
 - installs the programs in the `progs.csv` file, and
 - deploys [my dotfiles](https://github.com/nkostin4/circles).
 
-After running this script, enjoy a comfy and productive desktop.
+After running this script, enjoy a productive desktop.

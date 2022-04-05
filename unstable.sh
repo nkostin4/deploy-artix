@@ -1,5 +1,4 @@
 #!/bin/sh
-# N. Kostin's Boostrapping Script
 # UNSTABLE
 
 ### OPTIONS AND VARIABLES ###
