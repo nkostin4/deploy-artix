@@ -49,4 +49,5 @@ G,https://github.com/zsh-users/zsh-syntax-highlighting.git,"provides syntax high
 G,https://github.com/Hendrikto/backlight_control.git,"is an extremely simple way to control the backlighting."
 P,numpy,"is a python library that gives support for large, multi-dimensional arrays and matrices."
 P,scipy,"is a python library for scientific computing."
+P,matplotlib,"is a python library for creating visualizations."
 ,htop,"is an interactive process viewer."
