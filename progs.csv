@@ -6,6 +6,7 @@
 ,xclip,"allows for copying and pasting from the command line."
 ,xdotool,"provides window action utilities on the command line."
 ,dosfstools,"allows access to dos-like filesystems."
+,bc,"is a dropdown calculator."
 ,unzip,"unzips zips."
 ,unrar,"extracts rars."
 ,rxvt-unicode,"is a terminal emulator."
