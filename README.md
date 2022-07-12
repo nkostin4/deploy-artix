@@ -1,4 +1,4 @@
-# N. Kostin's Artix Linux Bootstrapping Scripts (inspired by LARBS)
+# N. Kostin's Artix Linux Bootstrapping Scripts (inspired by [LARBS](https://larbs.xyz/))
 
 ## Installation:
 
