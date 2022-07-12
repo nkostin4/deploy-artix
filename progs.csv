@@ -1,3 +1,4 @@
+#TAG,NAME IN REPO,PURPOSE
 ,xorg-server,"is the graphical server."
 ,xorg-xinit,"starts the graphical server."
 ,xcompmgr,"is for transparency and removing screen-tearing."
