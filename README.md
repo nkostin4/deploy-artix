@@ -2,7 +2,7 @@
 
 ## Installation
 
-Run the following commands as a root user:
+Run the following as a root user:
 
 ```
 curl -LO https://raw.githubusercontent.com/nkostin4/deploy-artix/master/stable.sh
