@@ -1,12 +1,14 @@
 # N. Kostin's Artix Linux Bootstrapping Scripts (inspired by [LARBS](https://larbs.xyz/))
 
+**This repo is no longer maintained.**
+
 ## Installation
 
 Run the following as a root user:
 
 ```
-curl -LO https://raw.githubusercontent.com/nkostin4/deploy-artix/master/stable.sh
-sh stable.sh
+curl -LO https://raw.githubusercontent.com/nkostin4/deploy-artix/master/unstable.sh
+sh unstable.sh
 ```
 
 ## What does this script do?
